@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, InputNumber, Button, Row, Col, Select, DatePicker, AutoComplete, Cascader, Tooltip, } from 'antd';
 import { Space } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
@@ -8,7 +8,14 @@ import Num from './Num';
 import Qualification from './Qualification';
 import Pin from './Pin';
 import Aadhar from './Aadhar';
+
 function Right() {
+  const [quali, setQuali] = useState("")
+  const { Option, OptGroup } = Select;
+
+  function handleChange(value) {
+    setQuali(`${value}`);
+  }
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -23,7 +30,7 @@ function Right() {
       range: '${label} must be between ${min} and ${max}',
     },
   };
-  const { Option } = Select;
+  
   return (
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
 
@@ -61,12 +68,12 @@ function Right() {
           </Col>
         </Row>
         <Row style={{ marginLeft: "3%" }} >
-          <Col span={6} style={{display:"flex",justifyContent:"flex-start"}}>
+          <Col span={6} style={{ display: "flex", justifyContent: "flex-start" }}>
             <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
               <Input />
             </Form.Item>
           </Col>
-          <Col span={8} style={{display:"flex",justifyContent:"center"}}>
+          <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
             <Row>
               <Col>
                 <label >Phone Number :</label>
@@ -130,7 +137,9 @@ function Right() {
 
           </Col>
         </Row>
-        <Qualification />
+     
+         
+        <br />
         <Row style={{ marginLeft: "5%" }}>
           <Col span={8}>
             <Row>
@@ -158,7 +167,7 @@ function Right() {
               <Col>
                 <label htmlFor='city'>City</label>
               </Col>
-              <Col style={{marginLeft:"2em"}}>
+              <Col style={{ marginLeft: "2em" }}>
                 <input type="text" id='city' />
               </Col>
             </Row>
@@ -168,7 +177,7 @@ function Right() {
               <Col>
                 <label htmlFor='state'>State</label>
               </Col>
-              <Col style={{marginLeft:"2em"}}>
+              <Col style={{ marginLeft: "2em" }}>
                 <input type="text" id='state' />
               </Col>
             </Row>
@@ -178,7 +187,7 @@ function Right() {
               <Col>
                 <label htmlFor='pincode'>Pincode</label>
               </Col>
-              <Col style={{marginLeft:"2em"}}>
+              <Col style={{ marginLeft: "2em" }}>
                 <Pin />
               </Col>
             </Row>
@@ -206,6 +215,11 @@ function Right() {
             </Row>
           </Col>
         </Row> <br />
+        
+    
+        <Qualification/>
+    
+      
       </Form>
 
 
