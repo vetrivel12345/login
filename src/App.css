@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

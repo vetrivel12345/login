@@ -8,6 +8,7 @@ import Num from './Num';
 import Qualification from './Qualification';
 import Pin from './Pin';
 import Aadhar from './Aadhar';
+import './Right.css'
 
 function Right() {
   const [quali, setQuali] = useState("")
@@ -35,112 +36,121 @@ function Right() {
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
 
       <Form {...layout} name="nest-messages" validateMessages={validateMessages}>
-        <Row style={{ marginLeft: "5%" }}>
-          <Col>
-            <Input.Group compact>
-              <Select style={{ width: '100%' }} defaultValue="Mr">
-                <Option value="Mr">Mr.</Option>
-                <Option value="Mrs">Mrs.</Option>
-              </Select>
-            </Input.Group>
-          </Col>
-          <Col span={8}>
-            <Form.Item name={['user', 'Firstname']} label="FirstName" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item name={['user', 'Lastname']} label="LastName" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row style={{ marginLeft: "4%" }}>
-          <Col>
-            <Form.Item name={['user', 'Fathername']} label="FatherName" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item name={['user', 'Mothername']} label="MotherName" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row style={{ marginLeft: "3%" }} >
-          <Col span={6} style={{ display: "flex", justifyContent: "flex-start" }}>
-            <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
-            <Row>
-              <Col>
-                <label >Phone Number :</label>
-              </Col>
-              <Col>
-                <Num />
-              </Col>
-            </Row>
-          </Col>
-          <Col span={8}>
-            <Form.Item name={['user', 'age']} maxl label="Age" rules={[{ type: 'number', min: 0, max: 99 }]} >
-              <InputNumber style={{ display: "flex" }} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row style={{ marginLeft: "3%" }}>
-          <Col span={8}>
-            <Row>
+      <div className='personal zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)" }}>
+      <Row style={{display:"flex",justifyContent:"center"}}>
+        <Col>
+          <Input.Group compact>
+            <Select style={{ width: '100%' }} defaultValue="Mr">
+              <Option value="Mr">Mr.</Option>
+              <Option value="Mrs">Mrs.</Option>
+            </Select>
+          </Input.Group>
+        </Col>
+        <Col span={8}>
+          <Form.Item name={['user', 'Firstname']} label="FirstName" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item name={['user', 'Lastname']} label="LastName" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+        </Col>
+      </Row>
+      
+      <Row style={{display:"flex",justifyContent:"center"}}>
+        <Col>
+          <Form.Item name={['user', 'Fathername']} label="FatherName" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item name={['user', 'Mothername']} label="MotherName" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+        </Col>
+      </Row>
+      </div>
 
-              <Col >
-                <Form.Item
-                  name="password"
-                  label="Password"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please input your password!',
-                    },
-                  ]}
-                  hasFeedback
-                >
-                  <Input.Password />
-                </Form.Item>
-              </Col>
-            </Row>
-          </Col>
-          <Col span={8}>
+      <div className='contact zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+      <Row style={{display:"flex",justifyContent:"center"}} >
+        <Col span={6} style={{ display: "flex", justifyContent: "flex-start" }}>
+          <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
+            <Input />
+          </Form.Item>
+        </Col>
+        <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
+          <Row>
+            <Col>
+              <label >Phone Number :</label>
+            </Col>
+            <Col>
+              <Num />
+            </Col>
+          </Row>
+        </Col>
+        <Col span={8}>
+          <Form.Item name={['user', 'age']} maxl label="Age" rules={[{ type: 'number', min: 0, max: 99 }]} >
+            <InputNumber style={{ display: "flex" }} />
+          </Form.Item>
+        </Col>
+      </Row>
+      
+      <Row style={{display:"flex",justifyContent:"center"}}>
+        <Col span={8}>
+          <Row>
 
-            <Form.Item
-              name="confirm"
-              label="Confirm Password"
-              dependencies={['password']}
-              hasFeedback
-              rules={[
-                {
-                  required: true,
-                  message: 'Please confirm your password!',
-                },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue('password') === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            <Col >
+              <Form.Item
+                name="password"
+                label="Password"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your password!',
                   },
-                }),
-              ]}
-            >
-              <Input.Password style={{ marginLeft: "2em" }} />
-            </Form.Item>
+                ]}
+                hasFeedback
+              >
+                <Input.Password />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Col>
+        <Col span={8}>
 
-          </Col>
-        </Row>
-     
+          <Form.Item
+            name="confirm"
+            label="Confirm Password"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm your password!',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                },
+              }),
+            ]}
+          >
+            <Input.Password style={{ marginLeft: "2em" }} />
+          </Form.Item>
+
+        </Col>
+      </Row>
+   
+      </div>
          
-        <br />
-        <Row style={{ marginLeft: "5%" }}>
+        
+        <div className='address zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+        
+        <Row style={{display:"flex",justifyContent:"center"}}>
           <Col span={8}>
             <Row>
               <Col>
@@ -160,18 +170,20 @@ function Right() {
               </Col>
             </Row>
           </Col>
-        </Row> <br />
-        <Row style={{ width: "100%", marginLeft: "5%" }}>
           <Col span={8}>
-            <Row>
-              <Col>
-                <label htmlFor='city'>City</label>
-              </Col>
-              <Col style={{ marginLeft: "2em" }}>
-                <input type="text" id='city' />
-              </Col>
-            </Row>
-          </Col>
+          <Row>
+            <Col>
+              <label htmlFor='city'>City</label>
+            </Col>
+            <Col style={{ marginLeft: "2em" }}>
+              <input type="text" id='city' />
+            </Col>
+          </Row>
+        </Col>
+        </Row> <br />
+
+        <Row style={{display:"flex",justifyContent:"center"}}>
+         
           <Col span={8}>
             <Row>
               <Col>
@@ -193,19 +205,23 @@ function Right() {
             </Row>
           </Col>
         </Row> <br />
-        <Row style={{ marginLeft: "5%" }}>
+
+        </div>
+        <div className='extra zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+        
+        <Row style={{display:"flex",justifyContent:"center"}}>
           <Col span={8}>
-            <Row>
+            <Row style={{display:"flex",justifyContent:"space-around"}}>
               <Col >
                 <label htmlFor="aadhar">Aadhar Number : </label>
               </Col>
-              <Col span={8}>
+              <Col >
                 <Aadhar />
               </Col>
             </Row>
           </Col>
-          <Col>
-            <Row>
+          <Col style={{width:"50%"}}>
+            <Row style={{display:"flex",justifyContent:"space-around"}}>
               <Col >
                 <label htmlFor="">upload your photo</label>
               </Col>
@@ -215,9 +231,9 @@ function Right() {
             </Row>
           </Col>
         </Row> <br />
-        
     
         <Qualification/>
+        </div>
     
       
       </Form>
