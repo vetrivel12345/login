@@ -3,10 +3,10 @@ import { Carousel } from 'antd';
 
 function Left() {
     const contentStyle = {
-        height: '200px',
-        color: '#fff',
-        
-        textAlign: 'center',
+      height: '690px',
+      color: '#fff',
+      lineHeight: '160px',
+      textAlign: 'center',
     
       };
   return <div>

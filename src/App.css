@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
-
+.zoom1{
+  
+  box-shadow: 9px 14px 32px -6px rgba(0,0,0,0.63);
+-webkit-box-shadow: 9px 14px 32px -6px rgba(0,0,0,0.63);
+-moz-box-shadow: 9px 14px 32px -6px rgba(0,0,0,0.63);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

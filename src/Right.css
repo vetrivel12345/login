@@ -1,7 +1,10 @@
 
-  .zoom{
+  .zoom1{
     transition: transform .6s;
+    box-shadow: 9px 14px 32px -6px rgba(0,0,0,0.63);
+-webkit-box-shadow: 9px 14px 32px -6px rgba(0,0,0,0.63);
+-moz-box-shadow: 9px 14px 32px -6px rgba(0,0,0,0.63);
   }
-  .zoom:hover {
+  .zoom1:hover {
     transform: scale(1.04); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }

@@ -9,10 +9,41 @@ import Qualification from './Qualification';
 import Pin from './Pin';
 import Aadhar from './Aadhar';
 import './Right.css'
+import db from './firebase';
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 function Right() {
   const [quali, setQuali] = useState("")
   const { Option, OptGroup } = Select;
+  const[name,setName]=useState("")
+  const[sec_name,setSec_name]=useState("")
+  const[email,setEmail]=useState("")
+  const[age,setAge]=useState( )
+  const[psw,setPsw]=useState("")
+  const[address,setAddress]=useState("")
+  const[state,setStat]=useState("")
+  const[city,setCity]=useState("")
+  const[house ,setHouse_no]=useState("")
+  const[fatherName,setFather_name]=useState("")
+  const[motherName,setMother_name]=useState("")
+
+  const writeData = async () => {
+ 
+    const docRef = await addDoc(collection(db, "formData"), {
+      name: name,
+      Second_Name: sec_name,
+      Email: email,
+      password: psw,
+      Age: age,
+      Address:address,
+      City:city,
+      House:house,
+      state:state,
+      Fathername:fatherName,
+      Mothername:motherName
+    });
+    console.log(await docRef)
+  }
 
   function handleChange(value) {
     setQuali(`${value}`);
@@ -36,7 +67,7 @@ function Right() {
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
 
       <Form {...layout} name="nest-messages" validateMessages={validateMessages}>
-      <div className='personal zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)" }}>
+      <div className='personal zoom1' style={{borderRadius:"10px",margin:"2em",padding:"2em"}}>
       <Row style={{display:"flex",justifyContent:"center"}}>
         <Col>
           <Input.Group compact>
@@ -48,12 +79,12 @@ function Right() {
         </Col>
         <Col span={8}>
           <Form.Item name={['user', 'Firstname']} label="FirstName" rules={[{ required: true }]}>
-            <Input />
+            <Input  onChange={(e=>{setName(e.target.value)})}/>
           </Form.Item>
         </Col>
         <Col span={8}>
           <Form.Item name={['user', 'Lastname']} label="LastName" rules={[{ required: true }]}>
-            <Input />
+            <Input  onChange={(e=>{setSec_name(e.target.value)})} />
           </Form.Item>
         </Col>
       </Row>
@@ -61,22 +92,22 @@ function Right() {
       <Row style={{display:"flex",justifyContent:"center"}}>
         <Col>
           <Form.Item name={['user', 'Fathername']} label="FatherName" rules={[{ required: true }]}>
-            <Input />
+            <Input  onChange={(e=>{setFather_name(e.target.value)})} />
           </Form.Item>
         </Col>
         <Col span={8}>
           <Form.Item name={['user', 'Mothername']} label="MotherName" rules={[{ required: true }]}>
-            <Input />
+            <Input  onChange={(e=>{setMother_name(e.target.value)})} />
           </Form.Item>
         </Col>
       </Row>
       </div>
 
-      <div className='contact zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+      <div className='contact zoom1' style={{borderRadius:"10px",margin:"2em",padding:"2em"}}>
       <Row style={{display:"flex",justifyContent:"center"}} >
         <Col span={6} style={{ display: "flex", justifyContent: "flex-start" }}>
           <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
-            <Input />
+            <Input  onChange={(e=>{setEmail(e.target.value)})} />
           </Form.Item>
         </Col>
         <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
@@ -91,7 +122,7 @@ function Right() {
         </Col>
         <Col span={8}>
           <Form.Item name={['user', 'age']} maxl label="Age" rules={[{ type: 'number', min: 0, max: 99 }]} >
-            <InputNumber style={{ display: "flex" }} />
+            <InputNumber style={{ display: "flex" }}  onChange={(e=>{setAge(e.target.value)})} />
           </Form.Item>
         </Col>
       </Row>
@@ -112,7 +143,7 @@ function Right() {
                 ]}
                 hasFeedback
               >
-                <Input.Password />
+                <Input.Password  onChange={(e=>{setPsw(e.target.value)})}/>
               </Form.Item>
             </Col>
           </Row>
@@ -148,7 +179,7 @@ function Right() {
       </div>
          
         
-        <div className='address zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+        <div className='address zoom1' style={{borderRadius:"10px",margin:"2em",padding:"2em"}}>
         
         <Row style={{display:"flex",justifyContent:"center"}}>
           <Col span={8}>
@@ -157,7 +188,7 @@ function Right() {
                 <label htmlFor="flat">House/Flat No :</label>
               </Col>
               <Col>
-                <Input type="text" id='flat' />
+                <Input type="text" id='flat'  onChange={(e=>{setHouse_no(e.target.value)})}/>
               </Col>
             </Row>
           </Col>
@@ -166,7 +197,7 @@ function Right() {
               <Col>
                 <label htmlFor="address">Adderss:</label>
               </Col>
-              <Col>  <Input type="text" id='address' />
+              <Col>  <Input type="text" id='address'  onChange={(e=>{setAddress(e.target.value)})}/>
               </Col>
             </Row>
           </Col>
@@ -176,7 +207,7 @@ function Right() {
               <label htmlFor='city'>City</label>
             </Col>
             <Col style={{ marginLeft: "2em" }}>
-              <input type="text" id='city' />
+              <input type="text" id='city'  onChange={(e=>{setCity(e.target.value)})} />
             </Col>
           </Row>
         </Col>
@@ -190,7 +221,7 @@ function Right() {
                 <label htmlFor='state'>State</label>
               </Col>
               <Col style={{ marginLeft: "2em" }}>
-                <input type="text" id='state' />
+                <input type="text" id='state'  onChange={(e=>{setStat(e.target.value)})}/>
               </Col>
             </Row>
           </Col>
@@ -200,14 +231,14 @@ function Right() {
                 <label htmlFor='pincode'>Pincode</label>
               </Col>
               <Col style={{ marginLeft: "2em" }}>
-                <Pin />
+                <Pin/>
               </Col>
             </Row>
           </Col>
         </Row> <br />
 
         </div>
-        <div className='extra zoom' style={{borderRadius:"10px",margin:"2em",padding:"2em",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+        <div className='extra zoom1' style={{borderRadius:"10px",margin:"2em",padding:"2em"}}>
         
         <Row style={{display:"flex",justifyContent:"center"}}>
           <Col span={8}>
@@ -234,7 +265,9 @@ function Right() {
     
         <Qualification/>
         </div>
-    
+            <div>
+            <button onClick={writeData()} style={{width:"10em",borderRadius:"1em"}}>submit</button>
+            </div>
       
       </Form>
 

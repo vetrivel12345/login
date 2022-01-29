@@ -16,25 +16,27 @@ function App() {
   return (
     <div className="App">
     <Layout>
-    <Sider style={{width:"100%",backgroundColor:"white",display:"flex",alignItems:"center", margin:"1%",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",position:"fixed"} }>
-    <div style={{width:"100%"}}>
+    <Sider  style={{margin:"1% 0%",borderRadius:"1em"}}>
+    <div style={{height:"900px",display:"flex",flexDirection:"column",overflow:"hidden"}}>
     
-    <img src="https://tamil.hostrain.in/hg-banner1.jpg" alt=""/>
+    <Left />
+    <Left />
     </div>
     </Sider>
-    <Layout>
-    <Header style={{display:"flex",justifyContent:"space-between",boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}><h2  style={{color:"white",marginLeft:"25%"  }}>HomeGenie service provider</h2> 
+    <Layout >
+    <Header className='zoom1' style={{display:"flex",justifyContent:"space-between",margin:"1%"}}>
+    <h2  style={{color:"white",marginLeft:"25%"  }}>HomeGenie service provider</h2> 
     <Pop/>
       </Header>
-      <Content style={{margin:"1%"}}>  
+      <Content style={{margin:"0% 1%"}}>  
       <br />
       <br />
       {sate=="preview"? <Right/>:sate=="next"? <WorkInfo/>:<Right/>}
       <div style={{display:"flex",justifyContent:"space-around",}}>
       
-      <input style={{boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}  type="button" value="preview" onClick={(e=>{setSate(e.target.value)})}/>
+      <input className='zoom1' style={{width:"10em",borderRadius:"1em"}}  type="button" value="preview" onClick={(e=>{setSate(e.target.value)})}/>
     
-      <input  style={{boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}} type="button" value="next" onClick={(e=>{setSate(e.target.value)})}/>
+      <input className='zoom1' style={{width:"10em",borderRadius:"1em"}} type="button" value="next" onClick={(e=>{setSate(e.target.value)})}/>
       </div>
     
       </Content>
